@@ -113,7 +113,7 @@ namespace ProyectoSimulacionTaller
 
 
                 //Totallabel.Text = Convert.ToString(CantMarcos4Taller*(4) + CantMarcos6Taller*(6));
-                Totallabel.Text = Convert.ToString(aux);
+                Totallabel.Text = Convert.ToString(total);
                 AsignarMarcosLleganAEnsamble(aux);
             }
 
@@ -403,31 +403,40 @@ namespace ProyectoSimulacionTaller
 
         int TiempoPintando = 0;
         int aux2Pintura = 0; //auxiliar para identificar si va a se 10, 11, 12 ... 20 minutos
+        bool mensaje = false;
+        double aux;
+        int contadorPintados=0;
+        int TiempoTranscurridoMantenimiento = 0;
         public void ProcesoPintura()
         {
-            if((total%20)!=0)
-            if (ListaPintado.Count > 0)
+           /* if (contadorPintados!=20)
             {
-                TiempoPintando++; //Tiempo que va transcurriendo pintando 1
+                mensaje = false;
+                TiempoMantenimiento = 0;*/
 
-                if (TiempoPintando == (aux2Pintura+10)) //si el tiempo alcanzo lo requerido
+                if (ListaPintado.Count > 0)
                 {
-                    TiempoPintando = 0;
-                    
+                    TiempoPintando++; //Tiempo que va transcurriendo pintando 1
 
-                    if (aux2Pintura == 10)
-                        aux2Pintura = 0;
-
-                    double inspeccion = Probabilidad();
-
-                    if(inspeccion>=0 && inspeccion < 90)
+                    if (TiempoPintando == (aux2Pintura + 10)) //si el tiempo alcanzo lo requerido
                     {
-                        ColaEmpaque.Enqueue(1);
-                        ListaPintado.RemoveAt(0);
-                        aux2Pintura++; //para saber si va en el 1, 2....
-                    }
-                    else
-                        if(inspeccion>90 && inspeccion <= 100)
+                        TiempoPintando = 0;
+
+
+                        if (aux2Pintura == 10)
+                            aux2Pintura = 0;
+
+                        double inspeccion = Probabilidad();
+
+                        if (inspeccion >= 0 && inspeccion < 90)
+                        {
+                            ColaEmpaque.Enqueue(1);
+                            ListaPintado.RemoveAt(0);
+                            aux2Pintura++; //para saber si va en el 1, 2....
+                            contadorPintados++;
+                        }
+                        else
+                            if (inspeccion > 90 && inspeccion <= 100)
                         {
                             timer1.Stop();
                             MessageBox.Show("Este marco no ha superado con éxito la inspeccion, debe ser retrabajado", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -437,9 +446,52 @@ namespace ProyectoSimulacionTaller
                             aux2Pintura++; //para saber si va en el 1, 2....
                         }
 
+                    }
                 }
-            }
-            
+            /*}
+            else
+            {
+               
+                aux = Probabilidad();
+                
+                if (mensaje==false) //Si no ha mostrado el mensaje
+                {
+                  
+                    if (aux >= 0 && aux < (1 / 3 * 100))
+                    {
+                        TiempoMantenimiento = 30;
+                        MessageBox.Show("Mantenimiento 30 Minutos");
+                    }
+                    else
+                    if (aux > (1 / 3 * 100) && aux < (1 / 2 * 100))
+                    {
+                        TiempoMantenimiento = 45;
+                        MessageBox.Show("Mantenimiento 45 Minutos");
+                    }
+                    else
+                        if (aux > (1 / 2 * 100) && aux <= (100))
+                    {
+                        TiempoMantenimiento = 60;
+                        MessageBox.Show("Mantenimiento 60 Minutos");
+                    }
+                    mensaje = true;
+
+                }
+
+
+                TiempoTranscurridoMantenimiento++;
+                if (TiempoTranscurridoMantenimiento == TiempoMantenimiento)
+                {
+                    TiempoTranscurridoMantenimiento = 0;
+                    TiempoMantenimiento = 0;
+                    contadorPintados = 0;
+
+                    
+                }
+
+                
+            }*/
+                    
 
             Empaquelabel.Text = Convert.ToString((int)ColaEmpaque.Count);
         }
