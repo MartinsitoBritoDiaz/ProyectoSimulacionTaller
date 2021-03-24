@@ -116,7 +116,7 @@ namespace ProyectoSimulacionTaller
 
 
             if (Horas < 10)
-                Horaslabel.Text = Convert.ToString("0" + Horas);
+                Horaslabel.Text = Convert.ToString("0 " + Horas);
             else
                 Horaslabel.Text = Convert.ToString(Horas);
 
