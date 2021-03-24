@@ -38,6 +38,7 @@ namespace ProyectoSimulacionTaller
         Queue ColaLlegada = new Queue();
 
         List<int> ListaAlmacen = new List<int>();
+        List<int> ListaPintado = new List<int>();
 
         public Form1()
         {
@@ -88,7 +89,7 @@ namespace ProyectoSimulacionTaller
                 if ((llegada >= 0) && (llegada <= 60))
                 {
                     aux = 4;
-                    CantMarcos4Taller += aux;
+                    CantMarcos4Taller ++;
                     Marcos4Label.Text = Convert.ToString(CantMarcos4Taller);
                 }
                 else
@@ -96,13 +97,13 @@ namespace ProyectoSimulacionTaller
                     if ((llegada > 60) && (llegada <= 100))
                     {
                         aux = 6;
-                        CantMarcos6Taller += aux;
+                        CantMarcos6Taller ++;
                         Marcos6Label.Text = Convert.ToString(CantMarcos6Taller);
                     }
                 }
 
 
-                label9.Text = Convert.ToString(CantMarcos4Taller + CantMarcos6Taller);
+                Totallabel.Text = Convert.ToString(CantMarcos4Taller*(4) + CantMarcos6Taller*(6));
                 AsignarMarcosLleganAEnsamble(aux);
             }
 
@@ -120,8 +121,43 @@ namespace ProyectoSimulacionTaller
             else
                 Horaslabel.Text = Convert.ToString(Horas);
 
+            Almacen();
+
+            
         }
 
+    
+        List<int> ListaHoraEntradaAlmacen = new List<int>();
+        public void Almacen()
+        {
+            
+                if (ListaAlmacen.Count > 1)
+                {
+                  /* foreach (var horaLlegada in ListaEntradaAlmacen)
+                    {
+                        if (Horas == horaLlegada)
+                        {
+                            ListaPintado.Add(1);
+                            aux = ListaEntradaAlmacen.IndexOf(horaLlegada);
+                            
+                        }
+
+                    }*/
+
+                    if (ListaHoraEntradaAlmacen.First() == Horas)
+                    {
+                        ListaPintado.Add(1);
+                        ListaHoraEntradaAlmacen.Remove(Horas);
+                        ListaAlmacen.RemoveAt(0);
+                        
+                    }
+                }
+
+                Pinturalabel.Text = ListaPintado.Count().ToString();
+
+            
+
+        }
 
         public void AsignarMarcosLleganAEnsamble(int aux)
         {
@@ -177,29 +213,34 @@ namespace ProyectoSimulacionTaller
             if(Carpintero1() != -1)
             {
                 ListaAlmacen.Add(Carpintero1());
+                ListaHoraEntradaAlmacen.Add(Horas);
             }
             
             if(Carpintero2() != -1)
             {
                 ListaAlmacen.Add(Carpintero2());
+                ListaHoraEntradaAlmacen.Add(Horas);
             }
             
             if(Carpintero3() != -1)
             {
                 ListaAlmacen.Add(Carpintero3());
+                ListaHoraEntradaAlmacen.Add(Horas);
             }
             
             if(Carpintero4() != -1)
             {
                 ListaAlmacen.Add(Carpintero4());
+                ListaHoraEntradaAlmacen.Add(Horas);
             }
             
             if(Carpintero5() != -1)
             {
                 ListaAlmacen.Add(Carpintero5());
+                ListaHoraEntradaAlmacen.Add(Horas);
             }
 
-            label4.Text = Convert.ToString(ListaAlmacen.Count());
+            Almacenlabel.Text = Convert.ToString(ListaAlmacen.Count());
         }
 
         public int Carpintero1()
@@ -231,7 +272,7 @@ namespace ProyectoSimulacionTaller
                 }
 
 
-                label5.Text = Convert.ToString((int)ColaLlegada.Count);
+                Ensamblajelabe.Text = Convert.ToString((int)ColaLlegada.Count);
 
             }
 
@@ -349,10 +390,10 @@ namespace ProyectoSimulacionTaller
             return -1;
         }
         
-        public void Almnacen()
-        {
+        
+        
 
-        }
+
         public void Ejecutar()
         {
             Llegada();
@@ -364,6 +405,11 @@ namespace ProyectoSimulacionTaller
         }
 
         private void Minutoslabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Marcos4Label_Click(object sender, EventArgs e)
         {
 
         }
