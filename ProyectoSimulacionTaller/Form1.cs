@@ -54,7 +54,7 @@ namespace ProyectoSimulacionTaller
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public double Probabilidad()
@@ -89,15 +89,46 @@ namespace ProyectoSimulacionTaller
                 Minutos = 00;
             }
 
-            if((Horas % 5 == 0) && (Minutos == 1))
+
+            //Aqui se quita la imagen de los marcos desarmados
+            //Lo coloque en 50 minutos para que se vean un poco las cajas
+            if(Minutos == 30)
             {
+
+                Marcos6PictureBox.Visible = false;
+                Marcos4PictureBox.Visible = false;
+
+                CaminonPictureBox.Visible = true;
+
+                if (CaminonPictureBox.Left < 40)
+                {
+                    CaminonPictureBox.Left += 10;
+                }
+
+            }
+
+
+            //Para mostrar las cajas que llegan
+            if (ColaLlegada.Count > 0)
+                ColaEntradapictureBox.Visible = true;
+            else
+                ColaEntradapictureBox.Visible = false;
+
+
+            if ((Horas % 5 == 0) && (Minutos == 1))
+            {
+                
+
                 int aux = 0;
 
                 if ((llegada >= 0) && (llegada <= 60))
                 {
                     aux = 4;
                     CantMarcos4Taller ++;
-                    
+                    Marcos4PictureBox.Visible = true;
+
+                    CaminonPictureBox.Left = -20;
+
                     Marcos4Label.Text = Convert.ToString(CantMarcos4Taller);
                 }
                 else
@@ -106,11 +137,14 @@ namespace ProyectoSimulacionTaller
                     {
                         aux = 6;
                         CantMarcos6Taller ++;
+                        Marcos6PictureBox.Visible = true;
+
+                        CaminonPictureBox.Left = -20;
+
                         Marcos6Label.Text = Convert.ToString(CantMarcos6Taller);
                     }
                 }
                 total += aux;
-
 
                 //Totallabel.Text = Convert.ToString(CantMarcos4Taller*(4) + CantMarcos6Taller*(6));
                 Totallabel.Text = Convert.ToString(total);
@@ -229,6 +263,7 @@ namespace ProyectoSimulacionTaller
 
             if(ColaLlegada.Count > 0)
             {
+                Capintero1pictureBox.Visible = true;
 
                 if (pasoC1)
                 {
@@ -256,6 +291,8 @@ namespace ProyectoSimulacionTaller
                 Ensamblajelabe.Text = Convert.ToString((int)ColaLlegada.Count);
 
             }
+            else
+                Capintero1pictureBox.Visible = false;
 
             return -1;
 
@@ -264,6 +301,8 @@ namespace ProyectoSimulacionTaller
         {
             if (ColaLlegada.Count > 0)
             {
+                Capintero2pictureBox.Visible = Visible;
+
                 if (pasoC2)
                 {
                     HoraActualC2 = Horas;
@@ -285,12 +324,18 @@ namespace ProyectoSimulacionTaller
                             pasoC2 = true;
                 }
             }
+            else
+                Capintero2pictureBox.Visible = false;
+
             return -1;
         }
+
         public int Carpintero3()
         {
             if (ColaLlegada.Count > 0)
             {
+                Carpintero3pictureBox.Visible = Visible;
+
                 if (pasoC3)
                 {
                     HoraActualC3 = Horas;
@@ -312,12 +357,17 @@ namespace ProyectoSimulacionTaller
                             pasoC3 = true;
                 }
             }
+            else
+                Carpintero3pictureBox.Visible = false;
+
+
             return -1;
         }
         public int Carpintero4()
         {
             if (ColaLlegada.Count > 0)
             {
+                Carpintero4pictureBox.Visible = Visible;
 
                 if (pasoC4)
                 {
@@ -340,17 +390,24 @@ namespace ProyectoSimulacionTaller
                             pasoC4 = true;
                 }
             }
+            else
+                Carpintero4pictureBox.Visible = false;
+
             return -1;
         }
+
         public int Carpintero5()
         {
-            if (ColaLlegada.Count > 0)
+
+            if (ColaLlegada.Count > 5)
             {
 
                 if (pasoC5)
                 {
                     HoraActualC5 = Horas;
                     pasoC5 = false;
+
+                    Carpintero5pictureBox.Visible = false;
                     return (int)ColaLlegada.Dequeue();
                 }
 
@@ -367,7 +424,12 @@ namespace ProyectoSimulacionTaller
                         if (Horas == 1)
                             pasoC5 = true;
                 }
+
+                //if(HoraActualC5 < Horas && !pasoC5)
+                //    Carpintero5pictureBox.Visible = true;
             }
+
+            label17.Text = Convert.ToString(ColaLlegada.Count);
             return -1;
         }
 
@@ -564,6 +626,11 @@ namespace ProyectoSimulacionTaller
         }
 
         private void Marcos4Label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Marcos6PictureBox_Click(object sender, EventArgs e)
         {
 
         }
