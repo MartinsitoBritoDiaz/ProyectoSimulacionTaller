@@ -310,8 +310,6 @@ namespace ProyectoSimulacionTaller
                 }
 
 
-                Ensamblajelabe.Text = Convert.ToString((int)ColaLlegada.Count);
-
             }
 
             return -1;
@@ -600,6 +598,7 @@ namespace ProyectoSimulacionTaller
 
                     Despachado++;
                     ColaEmpaque.Dequeue();
+
                 }
             }
 

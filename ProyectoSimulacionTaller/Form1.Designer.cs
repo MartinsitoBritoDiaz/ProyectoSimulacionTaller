@@ -37,9 +37,6 @@ namespace ProyectoSimulacionTaller
             this.Marcos4Label = new System.Windows.Forms.Label();
             this.Marcos6Label = new System.Windows.Forms.Label();
             this.Almacenlabel = new System.Windows.Forms.Label();
-            this.Ensamblajelabe = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Totallabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,7 +63,6 @@ namespace ProyectoSimulacionTaller
             this.Marcos4PictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColaEntradapictureBox = new System.Windows.Forms.PictureBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.Caja2pictureBox = new System.Windows.Forms.PictureBox();
             this.Caja4pictureBox = new System.Windows.Forms.PictureBox();
             this.Caja5pictureBox = new System.Windows.Forms.PictureBox();
@@ -173,33 +169,6 @@ namespace ProyectoSimulacionTaller
             this.Almacenlabel.Size = new System.Drawing.Size(32, 25);
             this.Almacenlabel.TabIndex = 8;
             this.Almacenlabel.Text = "....";
-            // 
-            // Ensamblajelabe
-            // 
-            this.Ensamblajelabe.AutoSize = true;
-            this.Ensamblajelabe.Location = new System.Drawing.Point(1107, 114);
-            this.Ensamblajelabe.Name = "Ensamblajelabe";
-            this.Ensamblajelabe.Size = new System.Drawing.Size(24, 17);
-            this.Ensamblajelabe.TabIndex = 9;
-            this.Ensamblajelabe.Text = "....";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1006, 153);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Almacen";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1006, 114);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 17);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Ensamblaje";
             // 
             // label3
             // 
@@ -473,15 +442,6 @@ namespace ProyectoSimulacionTaller
             this.ColaEntradapictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ColaEntradapictureBox.TabIndex = 50;
             this.ColaEntradapictureBox.TabStop = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1103, 153);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(28, 17);
-            this.label17.TabIndex = 51;
-            this.label17.Text = ".....";
             // 
             // Caja2pictureBox
             // 
@@ -762,7 +722,6 @@ namespace ProyectoSimulacionTaller
             this.Controls.Add(this.Caja5pictureBox);
             this.Controls.Add(this.Caja4pictureBox);
             this.Controls.Add(this.Caja2pictureBox);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.ColaEntradapictureBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Marcos6PictureBox);
@@ -789,9 +748,6 @@ namespace ProyectoSimulacionTaller
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Totallabel);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.Ensamblajelabe);
             this.Controls.Add(this.Almacenlabel);
             this.Controls.Add(this.Marcos6Label);
             this.Controls.Add(this.Marcos4Label);
@@ -840,9 +796,6 @@ namespace ProyectoSimulacionTaller
         private System.Windows.Forms.Label Marcos4Label;
         private System.Windows.Forms.Label Marcos6Label;
         private System.Windows.Forms.Label Almacenlabel;
-        private System.Windows.Forms.Label Ensamblajelabe;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Totallabel;
         private System.Windows.Forms.Label label4;
@@ -869,7 +822,6 @@ namespace ProyectoSimulacionTaller
         private System.Windows.Forms.PictureBox Marcos4PictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox ColaEntradapictureBox;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox Caja2pictureBox;
         private System.Windows.Forms.PictureBox Caja4pictureBox;
         private System.Windows.Forms.PictureBox Caja5pictureBox;
