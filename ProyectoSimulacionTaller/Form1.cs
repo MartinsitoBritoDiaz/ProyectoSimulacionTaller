@@ -37,6 +37,8 @@ namespace ProyectoSimulacionTaller
         bool pasoC4 = false;
         bool pasoC5 = false;
 
+        bool ControlAlmacen;
+
         Queue ColaLlegada = new Queue();
 
         List<int> ListaAlmacen = new List<int>();
@@ -97,6 +99,12 @@ namespace ProyectoSimulacionTaller
 
                 Marcos6PictureBox.Visible = false;
                 Marcos4PictureBox.Visible = false;
+
+                Caja1PictureBox.Visible = false;
+                Caja2pictureBox.Visible = false;
+                Caja3pictureBox.Visible = false;
+                Caja4pictureBox.Visible = false;
+                Caja5pictureBox.Visible = false;
 
                 CaminonPictureBox.Visible = true;
 
@@ -168,7 +176,13 @@ namespace ProyectoSimulacionTaller
             Almacen();
             ProcesoPintura();
             Empaque();
-            
+
+
+            if(ListaAlmacen.Count() > 0)
+            {
+                CajasAlmacenPictureBox.Visible = true;
+            }
+
         }
 
     
@@ -179,6 +193,9 @@ namespace ProyectoSimulacionTaller
             //Asignacion de marcos Desmontados
             if (aux == 4)
             {
+
+                Contador++;
+
                 ColaLlegada.Enqueue(Contador);
 
                 Contador++;
@@ -197,6 +214,9 @@ namespace ProyectoSimulacionTaller
             {
                 if (aux == 6)
                 {
+
+                    Contador++;
+
                     ColaLlegada.Enqueue(Contador);
 
                     Contador++;
@@ -229,6 +249,7 @@ namespace ProyectoSimulacionTaller
             {
                 ListaAlmacen.Add(Carpintero1());
                 ListaHoraEntradaAlmacen.Add(Horas);
+
             }
             
             if(Carpintero2() != -1)
@@ -263,12 +284,13 @@ namespace ProyectoSimulacionTaller
 
             if(ColaLlegada.Count > 0)
             {
-                Capintero1pictureBox.Visible = true;
 
                 if (pasoC1)
                 {
                     HoraActualC1 = Horas;
                     pasoC1 = false;
+                    Caja1PictureBox.Visible = true;
+
                     return (int)ColaLlegada.Dequeue();
                 }
 
@@ -291,8 +313,6 @@ namespace ProyectoSimulacionTaller
                 Ensamblajelabe.Text = Convert.ToString((int)ColaLlegada.Count);
 
             }
-            else
-                Capintero1pictureBox.Visible = false;
 
             return -1;
 
@@ -301,11 +321,11 @@ namespace ProyectoSimulacionTaller
         {
             if (ColaLlegada.Count > 0)
             {
-                Capintero2pictureBox.Visible = Visible;
 
                 if (pasoC2)
                 {
                     HoraActualC2 = Horas;
+                    Caja2pictureBox.Visible = true;
                     pasoC2 = false;
                     return (int)ColaLlegada.Dequeue();
                 }
@@ -324,8 +344,6 @@ namespace ProyectoSimulacionTaller
                             pasoC2 = true;
                 }
             }
-            else
-                Capintero2pictureBox.Visible = false;
 
             return -1;
         }
@@ -334,11 +352,11 @@ namespace ProyectoSimulacionTaller
         {
             if (ColaLlegada.Count > 0)
             {
-                Carpintero3pictureBox.Visible = Visible;
 
                 if (pasoC3)
                 {
                     HoraActualC3 = Horas;
+                    Caja3pictureBox.Visible = true;
                     pasoC3 = false;
                     return (int)ColaLlegada.Dequeue();
                 }
@@ -357,8 +375,6 @@ namespace ProyectoSimulacionTaller
                             pasoC3 = true;
                 }
             }
-            else
-                Carpintero3pictureBox.Visible = false;
 
 
             return -1;
@@ -367,11 +383,11 @@ namespace ProyectoSimulacionTaller
         {
             if (ColaLlegada.Count > 0)
             {
-                Carpintero4pictureBox.Visible = Visible;
 
                 if (pasoC4)
                 {
                     HoraActualC4 = Horas;
+                    Caja4pictureBox.Visible = true;
                     pasoC4 = false;
                     return (int)ColaLlegada.Dequeue();
                 }
@@ -390,8 +406,6 @@ namespace ProyectoSimulacionTaller
                             pasoC4 = true;
                 }
             }
-            else
-                Carpintero4pictureBox.Visible = false;
 
             return -1;
         }
@@ -406,8 +420,8 @@ namespace ProyectoSimulacionTaller
                 {
                     HoraActualC5 = Horas;
                     pasoC5 = false;
+                    Caja3pictureBox.Visible = true;
 
-                    Carpintero5pictureBox.Visible = false;
                     return (int)ColaLlegada.Dequeue();
                 }
 
@@ -425,11 +439,8 @@ namespace ProyectoSimulacionTaller
                             pasoC5 = true;
                 }
 
-                //if(HoraActualC5 < Horas && !pasoC5)
-                //    Carpintero5pictureBox.Visible = true;
             }
 
-            label17.Text = Convert.ToString(ColaLlegada.Count);
             return -1;
         }
 
@@ -452,6 +463,9 @@ namespace ProyectoSimulacionTaller
 
                 if (ListaHoraEntradaAlmacen.First() == Horas)
                 {
+                    MApagadapictureBox.Visible = false;
+                    MEncendidapictureBox.Visible = true;
+                    
                     ListaPintado.Add(1);
                     ListaHoraEntradaAlmacen.Remove(Horas);
                     ListaAlmacen.RemoveAt(0);
@@ -492,6 +506,9 @@ namespace ProyectoSimulacionTaller
 
                         if (inspeccion >= 0 && inspeccion < 90)
                         {
+                            MApagadapictureBox.Visible = true;
+                            MEncendidapictureBox.Visible = false;
+
                             ColaEmpaque.Enqueue(1);
                             ListaPintado.RemoveAt(0);
                             aux2Pintura++; //para saber si va en el 1, 2....
@@ -499,14 +516,14 @@ namespace ProyectoSimulacionTaller
                         }
                         else
                             if (inspeccion > 90 && inspeccion <= 100)
-                        {
-                            timer1.Stop();
-                            MessageBox.Show("Este marco no ha superado con éxito la inspeccion, debe ser retrabajado", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            timer1.Start();
-                            ListaPintado.RemoveAt(0);
-                            ListaPintado.Add(1);
-                            aux2Pintura++; //para saber si va en el 1, 2....
-                        }
+                            {
+                                timer1.Stop();
+                                MessageBox.Show("Este marco no ha superado con éxito la inspeccion, debe ser retrabajado", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                timer1.Start();
+                                ListaPintado.RemoveAt(0);
+                                ListaPintado.Add(1);
+                                aux2Pintura++; //para saber si va en el 1, 2....
+                            }
 
                     }
                 }
@@ -565,14 +582,21 @@ namespace ProyectoSimulacionTaller
         {
             if (ColaEmpaque.Count > 0)
             {
-                TiempoEmpacando++;
 
+                ONMaquinaEmpaquetadopictureBox.Visible = true;
+                OFFMaquinaEmpaquetadopictureBox.Visible = false;
+
+                TiempoEmpacando++;
+                    
                 if (TiempoEmpacando == (AuxEmpaque + 10))
                 {
                     if (AuxEmpaque == 5)
                         AuxEmpaque = 0;
 
                     TiempoEmpacando = 0;
+
+                    OFFMaquinaEmpaquetadopictureBox.Visible = true;
+                    ONMaquinaEmpaquetadopictureBox.Visible = false;
 
                     Despachado++;
                     ColaEmpaque.Dequeue();
@@ -632,6 +656,22 @@ namespace ProyectoSimulacionTaller
 
         private void Marcos6PictureBox_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
 
         }
     }
