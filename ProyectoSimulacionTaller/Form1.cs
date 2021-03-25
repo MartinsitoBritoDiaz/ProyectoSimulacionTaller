@@ -244,35 +244,41 @@ namespace ProyectoSimulacionTaller
 
         public void Ensambalar()
         {
+            int c1 = Carpintero1();
+            int c2 = Carpintero2();
+            int c3 = Carpintero3();
+            int c4 = Carpintero4();
+            int c5 = Carpintero5();
 
-            if(Carpintero1() != -1)
+
+            if(c1 != -1)
             {
-                ListaAlmacen.Add(Carpintero1());
+                ListaAlmacen.Add(c1);
                 ListaHoraEntradaAlmacen.Add(Horas);
 
             }
             
-            if(Carpintero2() != -1)
+            if(c2 != -1)
             {
-                ListaAlmacen.Add(Carpintero2());
+                ListaAlmacen.Add(c2);
                 ListaHoraEntradaAlmacen.Add(Horas);
             }
             
-            if(Carpintero3() != -1)
+            if(c3 != -1)
             {
-                ListaAlmacen.Add(Carpintero3());
+                ListaAlmacen.Add(c3);
                 ListaHoraEntradaAlmacen.Add(Horas);
             }
             
-            if(Carpintero4() != -1)
+            if(c4 != -1)
             {
-                ListaAlmacen.Add(Carpintero4());
+                ListaAlmacen.Add(c4);
                 ListaHoraEntradaAlmacen.Add(Horas);
             }
             
-            if(Carpintero5() != -1)
+            if(c5 != -1)
             {
-                ListaAlmacen.Add(Carpintero5());
+                ListaAlmacen.Add(c5);
                 ListaHoraEntradaAlmacen.Add(Horas);
             }
 
