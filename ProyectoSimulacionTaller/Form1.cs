@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ProyectoSimulacionTaller
 {
-    public partial class Form1 : Form
+    public partial class Simulacion : Form
     {
         public int Horas = 0;
         public int Minutos = 0;
@@ -49,7 +49,7 @@ namespace ProyectoSimulacionTaller
 
         int TiempoMantenimiento = 0;
 
-        public Form1()
+        public Simulacion()
         {
             InitializeComponent();
         }

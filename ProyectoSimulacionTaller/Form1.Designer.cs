@@ -1,7 +1,7 @@
 ﻿
 namespace ProyectoSimulacionTaller
 {
-    partial class Form1
+    partial class Simulacion
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace ProyectoSimulacionTaller
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulacion));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -639,7 +639,7 @@ namespace ProyectoSimulacionTaller
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(62, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 39);
+            this.label7.Size = new System.Drawing.Size(26, 38);
             this.label7.TabIndex = 11;
             this.label7.Text = ":";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -696,7 +696,7 @@ namespace ProyectoSimulacionTaller
             this.label23.TabIndex = 72;
             this.label23.Text = "Grupos de marcos";
             // 
-            // Form1
+            // Simulacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -753,8 +753,8 @@ namespace ProyectoSimulacionTaller
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Simulacion";
+            this.Text = "Simulación";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CaminonPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Capintero1pictureBox)).EndInit();
