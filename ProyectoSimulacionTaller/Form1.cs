@@ -485,10 +485,10 @@ namespace ProyectoSimulacionTaller
         int TiempoTranscurridoMantenimiento = 0;
         public void ProcesoPintura()
         {
-           /* if (contadorPintados!=20)
+           if (contadorPintados!=20)
             {
                 mensaje = false;
-                TiempoMantenimiento = 0;*/
+                TiempoMantenimiento = 0;
 
                 if (ListaPintado.Count > 0)
                 {
@@ -527,7 +527,7 @@ namespace ProyectoSimulacionTaller
 
                     }
                 }
-            /*}
+            }
             else
             {
                
@@ -535,25 +535,26 @@ namespace ProyectoSimulacionTaller
                 
                 if (mensaje==false) //Si no ha mostrado el mensaje
                 {
-                  
-                    if (aux >= 0 && aux < (1 / 3 * 100))
+                    timer1.Stop();
+                    if (aux >= 0 && aux < 33)
                     {
                         TiempoMantenimiento = 30;
                         MessageBox.Show("Mantenimiento 30 Minutos");
                     }
                     else
-                    if (aux > (1 / 3 * 100) && aux < (1 / 2 * 100))
+                    if (aux > (33) && aux < (66))
                     {
                         TiempoMantenimiento = 45;
                         MessageBox.Show("Mantenimiento 45 Minutos");
                     }
                     else
-                        if (aux > (1 / 2 * 100) && aux <= (100))
+                        if (aux > (66) && aux <= (100))
                     {
                         TiempoMantenimiento = 60;
                         MessageBox.Show("Mantenimiento 60 Minutos");
                     }
                     mensaje = true;
+                    timer1.Start();
 
                 }
 
@@ -565,11 +566,10 @@ namespace ProyectoSimulacionTaller
                     TiempoMantenimiento = 0;
                     contadorPintados = 0;
 
-                    
                 }
 
                 
-            }*/
+            }
                     
 
             Empaquelabel.Text = Convert.ToString((int)ColaEmpaque.Count);
